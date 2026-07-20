@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.ruff_cache/
+
+# Environments and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+*.local
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datasets and experiment outputs
+hest1k_datasets/
+data/
+results/
+runs/
+checkpoints/
+samples/
+logs/
+*.log
+
+# Large scientific artifacts
+*.pt
+*.pth
+*.ckpt
+*.h5ad
+*.h5
+*.tif
+*.tiff
+*.svs
