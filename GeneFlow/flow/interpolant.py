@@ -31,23 +31,20 @@ class Interpolant:
         )
         return interpolated, prior_expression, timestep
 
-    def flow_matching_loss(self, model, expression, image_features):
-        """Compute the x-prediction flow-matching loss."""
+    def flow_matching_loss(self, model, exp, img_features):
+        """Compute x-prediction flow matching loss used by training."""
+        exp_t, exp_0, t = self.corrupt_exp_x0(exp)
+        exp_pred = model(exp=exp_t, t=t, img_features=img_features)
+        v_target = (exp - exp_t) / (1 - t[:, None]).clamp_min(5e-2)
+        v_pred = (exp_pred - exp_t) / (1 - t[:, None]).clamp_min(5e-2)
+        valid_mask = img_features.sum(-1) != 0
+        return F.mse_loss(v_pred[valid_mask], v_target[valid_mask])
 
-        expression_t, expression_0, timestep = self.corrupt_exp_x0(
-            expression
-        )
-        expression_prediction = model(
-            exp=expression_t,
-            t=timestep,
-            img_features=image_features,
-        )
-        target_velocity = expression - expression_0
-        predicted_velocity = expression_prediction - expression_0
-        valid_mask = image_features.sum(-1) != 0
-        return F.mse_loss(
-            predicted_velocity[valid_mask], target_velocity[valid_mask]
-        )
+        # exp_t, exp_0, t = self.corrupt_exp_x0(exp)
+        # exp_pred = model(exp=exp_t, t=t, img_features=img_features)
+        # valid_mask = img_features.sum(-1) != 0
+        # return F.mse_loss(exp_pred[valid_mask], exp[valid_mask])
+
 
     @staticmethod
     def x_pred_to_velocity(
