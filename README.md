@@ -112,6 +112,11 @@ python geneflow_sample.py \
 The sampling model arguments must match the values used to create the
 checkpoint. Run `python geneflow_sample.py --help` for the full list.
 
+For reproducibility, we provide the pretrained GeneFlow checkpoint used for
+sampling on the HEST-1k dataset. The checkpoint can be downloaded from
+[Google Drive](https://drive.google.com/file/d/12LSJI2q0cuIeoikHpHb-F8iRhXeanNXI/view?usp=drive_link).
+
+
 ## Evaluation
 
 Open `eval.ipynb`, set the dataset root, slide ID, generated sample path, and
