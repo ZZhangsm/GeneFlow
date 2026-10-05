@@ -31,13 +31,19 @@ class Interpolant:
         )
         return interpolated, prior_expression, timestep
 
-    def flow_matching_loss(self, model, exp, img_features):
-        """x-pred / v-loss."""
+    def flow_matching_loss(self, model, exp, img_features, type="xv"):
+        """Flow matching MSE."""
         exp_t, exp_0, t = self.corrupt_exp_x0(exp)
-        exp_pred = model(exp=exp_t, t=t, img_features=img_features)
+        out = model(exp=exp_t, t=t, img_features=img_features)
         valid_mask = img_features.sum(-1) != 0
-        return F.mse_loss((exp_pred - exp_0)[valid_mask], (exp - exp_0)[valid_mask])
-
+        key = type.lower()
+        if key == "xv":
+            return F.mse_loss((out - exp_0)[valid_mask], (exp - exp_0)[valid_mask])
+        if key == "xx":
+            return F.mse_loss(out[valid_mask], exp[valid_mask])
+        if key == "vv":
+            return F.mse_loss(out[valid_mask], (exp - exp_0)[valid_mask])
+        raise ValueError(f"Unknown flow matching loss type {kind!r}; expected vv, xx, or xv")
 
     @staticmethod
     def x_pred_to_velocity(
