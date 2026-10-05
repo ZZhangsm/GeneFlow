@@ -43,7 +43,7 @@ class Interpolant:
             return F.mse_loss(out[valid_mask], exp[valid_mask])
         if key == "vv":
             return F.mse_loss(out[valid_mask], (exp - exp_0)[valid_mask])
-        raise ValueError(f"Unknown flow matching loss type {kind!r}; expected vv, xx, or xv")
+        raise ValueError(f"Unknown flow matching loss type {type!r}; expected vv, xx, or xv")
 
     @staticmethod
     def x_pred_to_velocity(
