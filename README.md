@@ -123,9 +123,6 @@ Open `eval.ipynb`, set the dataset root, slide ID, generated sample path, and
 image filename in the configuration cells, then run the notebook to calculate
 PCC, MAE, MSE, RVD, and gene-level visualizations.
 
-## Citation
-
-The GeneFlow citation will be added when it becomes available.
 
 ## Acknowledgements
 
@@ -139,3 +136,18 @@ CONCH embeddings. See `NOTICE` for license details.
 
 GeneFlow is released under the Creative Commons Attribution-NonCommercial 4.0
 International license. See `LICENSE` and `NOTICE`.
+
+## Citation
+```LaTeX
+@inproceedings{
+  zhang2026more,
+  title={More Genes, Faster Inference: Efficient Large-Panel Spatial Transcriptomics Prediction from Histology},
+  author={Songming Zhang and Yuxiao Luo and Siran Chen and Shifu Luo and Shuquan Su and Jinyan Li},
+  booktitle={33rd SIGKDD Conference on Knowledge Discovery and Data Mining - AI for Sciences Track Cycle 1 (July)},
+  year={2026},
+  url={https://openreview.net/forum?id=w1eSNwUusO}
+}
+```
+
+
+
