@@ -1,9 +1,16 @@
-# GeneFlow
+# GeneFlow — More Genes, Faster Inference: Efficient Large-Panel Spatial Transcriptomics Prediction from Histology
+
+[![KDD 2027](https://img.shields.io/badge/KDD-2027-315D80)](https://openreview.net/forum?id=w1eSNwUusO) [![Paper on OpenReview](https://img.shields.io/badge/Paper-OpenReview-8C1B13)](https://openreview.net/forum?id=w1eSNwUusO) [![Hugging Face model](https://img.shields.io/badge/Hugging%20Face-Features%20%26%20Weights-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/curlszhang/GeneFlow)
 
 GeneFlow is a flow-matching framework for inferring spatially resolved gene
 expression from histology images. It combines histology embeddings with a
 learned gene tokenizer and a DiT-style backbone to generate virtual expression
 profiles.
+
+## News
+
+- Our paper *More Genes, Faster Inference* has been accepted to **KDD 2027**.
+- We released the [precomputed image features](https://huggingface.co/curlszhang/GeneFlow/tree/main/features) and [pretrained weights](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints) for PRAD, her2st, kidney, and mouse_brain.
 
 ![Overview of GeneFlow](assets/overview.png)
 
@@ -12,7 +19,7 @@ profiles.
 Clone the repository and create the Conda environment:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/GeneFlow.git
+git clone https://github.com/ZZhangsm/GeneFlow.git
 cd GeneFlow
 conda env create -f environment.yml
 conda activate geneflow_env
@@ -41,9 +48,12 @@ environment rather than storing it in source code:
 export HF_TOKEN="your_token"
 ```
 
-GeneFlow expects precomputed [UNI](https://github.com/mahmoodlab/UNI) and
-[CONCH](https://github.com/mahmoodlab/CONCH) patch embeddings. Embedding
-extraction is not included in this initial release.
+GeneFlow provides spot-level H&E patch embeddings for 96 slides across the four
+cohorts. [UNI v1](https://github.com/mahmoodlab/UNI) produces 1,024 features per
+spot and [CONCH](https://github.com/mahmoodlab/CONCH) produces 512. Rows follow the
+spot order in the matching HEST slide. Download your cohort from
+[`features/<cohort>/processed_data/`](https://huggingface.co/curlszhang/GeneFlow/tree/main/features)
+and place its four embedding directories under the local `processed_data/` directory shown below.
 
 The expected dataset structure is:
 
@@ -64,8 +74,7 @@ hest1k_datasets/DATASET_NAME/
         └── SLIDE_ID_conch_aug.pt
 ```
 
-Each augmented embedding file is expected to contain one set of candidate
-augmentations per spatial spot.
+Each augmented embedding file contains seven views per spot.
 
 ## Training
 
@@ -112,8 +121,14 @@ python geneflow_sample.py \
 The sampling model arguments must match the values used to create the
 checkpoint. Run `python geneflow_sample.py --help` for the full list.
 
-For reproducibility, we provide the pretrained GeneFlow checkpoint used for
-sampling on the HEST-1k dataset. The checkpoint can be downloaded from
+To sample with pretrained weights, choose one of the six
+[checkpoint sets on Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
+Each set includes a `.pt` file, its configuration, and its gene list. For the
+PRAD example above, use `checkpoints/PRAD_1k/0015000.pt` as `--ckpt`, match the
+model arguments to the bundled `config.json`, and place the gene list in the
+cohort’s `processed_data/` directory.
+
+The original HEST-1k sampling checkpoint is also available on
 [Google Drive](https://drive.google.com/file/d/12LSJI2q0cuIeoikHpHb-F8iRhXeanNXI/view?usp=drive_link).
 
 
