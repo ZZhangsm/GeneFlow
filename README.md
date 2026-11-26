@@ -7,7 +7,7 @@ expression from histology images. It combines histology embeddings with a
 learned gene tokenizer and a DiT-style backbone to generate virtual expression
 profiles.
 
-## News
+## 🎉 News
 
 - Our paper *More Genes, Faster Inference* has been accepted to **KDD 2027**.
 - We released the [precomputed image features](https://huggingface.co/curlszhang/GeneFlow/tree/main/features) and [pretrained weights](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints) for PRAD, her2st, kidney, and mouse_brain.
@@ -121,15 +121,7 @@ python geneflow_sample.py \
 The sampling model arguments must match the values used to create the
 checkpoint. Run `python geneflow_sample.py --help` for the full list.
 
-To sample with pretrained weights, choose one of the six
-[checkpoint sets on Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
-Each set includes a `.pt` file, its configuration, and its gene list. For the
-PRAD example above, use `checkpoints/PRAD_1k/0015000.pt` as `--ckpt`, match the
-model arguments to the bundled `config.json`, and place the gene list in the
-cohort’s `processed_data/` directory.
-
-The original HEST-1k sampling checkpoint is also available on
-[Google Drive](https://drive.google.com/file/d/12LSJI2q0cuIeoikHpHb-F8iRhXeanNXI/view?usp=drive_link).
+All six pretrained GeneFlow checkpoints are available on [Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
 
 
 ## Evaluation
