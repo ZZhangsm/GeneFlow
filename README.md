@@ -30,6 +30,8 @@ The default scripts target CUDA GPUs. Adjust the PyTorch installation in
 
 ## Dataset Preparation
 
+⭐ **Skip feature extraction.** We have uploaded the precomputed UNI v1 and CONCH image features for all four cohorts. [Download the features for your cohort on Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/features).
+
 The cohorts used by this code follow the file naming and directory conventions
 of the [HEST](https://github.com/mahmoodlab/HEST) dataset.
 
