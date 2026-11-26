@@ -123,7 +123,7 @@ python geneflow_sample.py \
 The sampling model arguments must match the values used to create the
 checkpoint. Run `python geneflow_sample.py --help` for the full list.
 
-All six pretrained GeneFlow checkpoints are available on [Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
+⭐ **Skip training.** All six pretrained GeneFlow checkpoints are available on [Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
 
 
 ## Evaluation
