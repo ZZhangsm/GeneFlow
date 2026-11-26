@@ -110,6 +110,8 @@ Checkpoints retain model, EMA, and optimizer state dictionaries.
 
 ## Sampling
 
+⭐ **Skip training.** All six pretrained GeneFlow checkpoints are available on [Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
+
 Generate expression profiles for a held-out slide with:
 
 ```bash
@@ -122,9 +124,6 @@ python geneflow_sample.py \
 
 The sampling model arguments must match the values used to create the
 checkpoint. Run `python geneflow_sample.py --help` for the full list.
-
-⭐ **Skip training.** All six pretrained GeneFlow checkpoints are available on [Hugging Face](https://huggingface.co/curlszhang/GeneFlow/tree/main/checkpoints).
-
 
 ## Evaluation
 
