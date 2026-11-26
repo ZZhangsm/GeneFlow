@@ -1,6 +1,6 @@
 # GeneFlow — More Genes, Faster Inference: Efficient Large-Panel Spatial Transcriptomics Prediction from Histology
 
-[![KDD 2027](https://img.shields.io/badge/KDD-2027-315D80)](https://openreview.net/forum?id=w1eSNwUusO) [![Paper on OpenReview](https://img.shields.io/badge/Paper-OpenReview-8C1B13)](https://openreview.net/forum?id=w1eSNwUusO) [![Hugging Face model](https://img.shields.io/badge/Hugging%20Face-Features%20%26%20Weights-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/curlszhang/GeneFlow)
+[![KDD 2027](https://img.shields.io/badge/KDD-2027-315D80)](https://openreview.net/forum?id=w1eSNwUusO) [![arXiv:2611.17899](https://img.shields.io/badge/arXiv-2611.17899-b31b1b)](https://arxiv.org/abs/2611.17899) [![Hugging Face model](https://img.shields.io/badge/Hugging%20Face-Features%20%26%20Weights-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/curlszhang/GeneFlow)
 
 GeneFlow is a flow-matching framework for inferring spatially resolved gene
 expression from histology images. It combines histology embeddings with a
